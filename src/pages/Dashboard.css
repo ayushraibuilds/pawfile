@@ -1,0 +1,318 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.greeting {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+.health-score {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+}
+
+.score-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--map-color), #55efc4);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+}
+
+.score-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.score-text strong {
+    font-size: 16px;
+    color: var(--text-main);
+}
+
+.score-text span {
+    font-size: 13px;
+    color: var(--map-color);
+    font-weight: 500;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    border-radius: var(--border-radius-lg);
+    font-size: 18px;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+    color: white;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.action-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-25deg);
+    transition: all 0.7s ease;
+}
+
+.action-card:hover::before {
+    left: 200%;
+}
+
+.action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.color-health {
+    background: linear-gradient(135deg, var(--health-color), #74b9ff);
+}
+
+.color-food {
+    background: linear-gradient(135deg, #f39c12, var(--accent-color));
+    color: var(--text-main);
+}
+
+.color-map {
+    background: linear-gradient(135deg, var(--map-color), #55efc4);
+}
+
+.card-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.dashboard-section {
+    padding: 24px;
+}
+
+.mt-4 {
+    margin-top: 24px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-warning {
+    color: #f39c12;
+}
+
+.text-health {
+    color: var(--health-color);
+}
+
+.btn-link {
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+.reminder-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.reminder-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    border-radius: var(--border-radius-sm);
+    background: rgba(0, 0, 0, 0.02);
+    border-left: 4px solid transparent;
+    transition: transform var(--transition-fast);
+}
+
+.reminder-item:hover {
+    transform: translateX(4px);
+    background: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.reminder-item.critical {
+    border-left-color: var(--emergency-color);
+}
+
+.reminder-item.warning {
+    border-left-color: #f39c12;
+}
+
+.reminder-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 10px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    min-width: 60px;
+}
+
+.reminder-date .day {
+    font-size: 20px;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    line-height: 1;
+}
+
+.reminder-date .month {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.reminder-info h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.reminder-info p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.activity-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 10px;
+    border-left: 2px solid var(--border-color);
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    gap: 16px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -17px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.bg-food {
+    background-color: var(--food-color);
+}
+
+.bg-map {
+    background-color: var(--map-color);
+}
+
+.timeline-content p {
+    font-size: 15px;
+}
+
+.timeline-content .time {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.featured-photo {
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    min-height: 400px;
+}
+
+.photo-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo-container:hover img {
+    transform: scale(1.05);
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 20px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+}
+
+.photo-overlay h3 {
+    color: white;
+    margin-bottom: 4px;
+}
+
+.photo-overlay p {
+    opacity: 0.9;
+}

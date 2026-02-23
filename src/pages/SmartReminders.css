@@ -1,0 +1,187 @@
+.reminders-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 14px;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.filter-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: var(--text-main);
+}
+
+.filter-btn.active {
+    background: var(--text-main);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.reminders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.timeline-title {
+    font-size: 18px;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.mt-5 {
+    margin-top: 32px;
+}
+
+.reminder-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 16px;
+    border-left: 4px solid transparent;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.reminder-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.warning-card {
+    border-left-color: #f39c12;
+}
+
+.critical-card {
+    border-left-color: var(--emergency-color);
+}
+
+.neutral-card {
+    border-left-color: var(--border-color);
+}
+
+.reminder-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.category-health {
+    background: rgba(243, 156, 18, 0.1);
+}
+
+.category-grooming {
+    background: rgba(108, 92, 231, 0.1);
+}
+
+.category-vax {
+    background: rgba(214, 48, 49, 0.1);
+}
+
+.category-med {
+    background: rgba(9, 132, 227, 0.1);
+}
+
+.reminder-content {
+    flex: 1;
+}
+
+.reminder-content h4 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.reminder-content p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.reminder-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.due-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    background: var(--bg-color);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.warning-card .due-date {
+    color: #d35400;
+    background: rgba(243, 156, 18, 0.15);
+}
+
+.critical-card .due-date {
+    color: var(--emergency-color);
+    background: rgba(214, 48, 49, 0.1);
+}
+
+.ai-badge {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--sitter-color);
+    background: rgba(108, 92, 231, 0.08);
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.ai-badge::before {
+    content: '✨';
+    margin-right: 4px;
+    font-size: 12px;
+}
+
+.reminder-actions {
+    padding-left: 20px;
+}
+
+.btn-done {
+    color: var(--border-color);
+    transition: all var(--transition-fast);
+}
+
+.btn-done:not(.disabled):hover {
+    color: #00b894;
+    transform: scale(1.1);
+}
+
+.btn-done.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

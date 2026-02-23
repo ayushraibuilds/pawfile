@@ -1,0 +1,240 @@
+.pawfolio-page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.header-pawfolio {
+    margin-bottom: 0;
+}
+
+.btn-upload {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--photo-color), #fd79a8);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(232, 67, 147, 0.3);
+    transition: all var(--transition-fast);
+}
+
+.btn-upload:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 67, 147, 0.4);
+}
+
+.pupdate-section {
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+    min-height: 280px;
+    background: linear-gradient(to right, #ffffff, #ffe4f0);
+}
+
+.pupdate-content {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pupdate-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--photo-color);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    width: fit-content;
+    margin-bottom: 16px;
+}
+
+.pupdate-content h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.pupdate-content p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 24px;
+    max-width: 400px;
+}
+
+.btn-play {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--text-main);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 15px;
+    width: fit-content;
+    transition: all var(--transition-fast);
+}
+
+.btn-play:hover {
+    background: #000;
+    transform: scale(1.02);
+}
+
+.pupdate-image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.pupdate-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    transition: transform 0.5s ease;
+}
+
+.pupdate-section:hover .pupdate-image img {
+    transform: scale(1.05);
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);
+    cursor: pointer;
+}
+
+.play-circle {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.play-overlay:hover .play-circle {
+    transform: scale(1.1);
+    background: var(--photo-color);
+    border-color: var(--photo-color);
+}
+
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-view-options {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.masonry-grid {
+    column-count: 3;
+    column-gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 1000px) {
+    .masonry-grid {
+        column-count: 2;
+    }
+
+    .pupdate-section {
+        flex-direction: column;
+    }
+
+    .pupdate-image img,
+    .play-overlay {
+        clip-path: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .masonry-grid {
+        column-count: 1;
+    }
+}
+
+.photo-card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    background: white;
+}
+
+.photo-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.03);
+}
+
+.photo-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 16px 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover .photo-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-info span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.like-icon {
+    transition: transform 0.2s ease;
+}
+
+.like-icon:hover {
+    transform: scale(1.2);
+    color: var(--photo-color);
+    fill: var(--photo-color);
+}
