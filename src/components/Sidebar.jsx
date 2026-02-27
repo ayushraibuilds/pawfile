@@ -9,7 +9,8 @@ import {
     ShieldAlert,
     Camera,
     Users,
-    Cloud
+    Cloud,
+    Brain
 } from 'lucide-react';
 import './Sidebar.css';
 import { usePets } from '../context/PetContext';
@@ -17,6 +18,7 @@ import { usePets } from '../context/PetContext';
 const navItems = [
     { path: '/dashboard', label: 'Overview', icon: LayoutDashboard },
     { path: '/dashboard/health', label: 'Health Vault', icon: HeartPulse },
+    { path: '/dashboard/breed-genius', label: 'Breed Genius', icon: Brain },
     { path: '/dashboard/reminders', label: 'Smart Reminders', icon: Bell },
     { path: '/dashboard/food', label: 'Food Brain', icon: Bone },
     { path: '/dashboard/map', label: 'Pet Map', icon: MapPin },

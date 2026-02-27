@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Search, Bell, Settings, Plus, LogOut } from 'lucide-react';
+import { Search, Bell, Settings, Plus, LogOut, Sun, Moon } from 'lucide-react';
 import './Navbar.css';
 import { useAuth } from '../context/AuthContext';
+import { useTheme } from '../context/ThemeContext';
+import { useToast } from '../context/ToastContext';
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const { user, signOut } = useAuth();
+    const { isDarkMode, toggleTheme } = useTheme();
+    const { showToast } = useToast();
     const navigate = useNavigate();
 
     const handleSignOut = async () => {
@@ -34,17 +38,20 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-actions">
-                <button className="btn-add">
+                <button className="btn-add" onClick={() => showToast("Quick log entry coming soon!", "info")}>
                     <Plus size={16} />
                     <span>New Entry</span>
                 </button>
 
                 <div className="action-icons">
-                    <button className="icon-btn">
+                    <button className="icon-btn" onClick={toggleTheme} title="Toggle Theme">
+                        {isDarkMode ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-gray-600" />}
+                    </button>
+                    <button className="icon-btn" onClick={() => showToast("No new notifications.", "info")} title="Notifications">
                         <Bell size={20} />
                         <span className="badge">3</span>
                     </button>
-                    <button className="icon-btn">
+                    <button className="icon-btn" onClick={() => showToast("Settings panel coming soon.", "info")} title="Settings">
                         <Settings size={20} />
                     </button>
                     <button className="icon-btn" onClick={handleSignOut} title="Sign Out">

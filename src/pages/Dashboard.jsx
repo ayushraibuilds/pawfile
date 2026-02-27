@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import { HeartPulse, Bell, Bone, MapPin, ChevronRight, Activity, Plus, FileQuestion, Camera } from 'lucide-react';
+import { HeartPulse, Bell, Bone, MapPin, Activity, FileQuestion, Camera, Brain } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 import { useAuth } from '../context/AuthContext';
 import { usePets } from '../context/PetContext';
 import { useToast } from '../context/ToastContext';
+import OnboardingWizard from '../components/OnboardingWizard';
 
 const Dashboard = () => {
     const { user } = useAuth();
     const { activePet, addPet, loadingPets } = usePets();
     const { showToast } = useToast();
+    const navigate = useNavigate();
 
     const [isAddingPet, setIsAddingPet] = useState(false);
     const [newPet, setNewPet] = useState({ name: '', breed: '', age: '', weight_kg: '' });
 
-    const handleAddPet = async (e) => {
-        e.preventDefault();
+    const handleAddPet = async (petData) => {
         try {
-            await addPet(newPet);
+            await addPet(petData);
             setIsAddingPet(false);
         } catch (error) {
-            alert('Failed to add pet');
+            showToast('Failed to add pet. Please try again.', 'error');
         }
     };
 
@@ -30,10 +32,14 @@ const Dashboard = () => {
     if (!activePet && !isAddingPet) {
         return (
             <div className="dashboard animate-fade-in" style={{ justifyContent: 'center', alignItems: 'center', height: '100%', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <h2>Welcome to PAWFILE!</h2>
-                <p>Let's get started by adding your first pet to the platform.</p>
-                <button className="btn-add-new" onClick={() => setIsAddingPet(true)} style={{ padding: '12px 24px', fontSize: '16px' }}>
-                    <Plus size={20} style={{ marginRight: '8px' }} /> Add Your Pet
+                <Brain size={64} className="text-purple-500 opacity-50 mb-2" />
+                <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-600">Welcome to PAWFILE!</h2>
+                <p className="text-gray-500 dark:text-gray-400">Your AI-powered operating system for pet parenting.</p>
+                <button
+                    onClick={() => setIsAddingPet(true)}
+                    className="mt-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all w-64 text-lg"
+                >
+                    Start Onboarding
                 </button>
             </div>
         );
@@ -41,31 +47,8 @@ const Dashboard = () => {
 
     if (!activePet && isAddingPet) {
         return (
-            <div className="dashboard animate-fade-in" style={{ display: 'flex', justifyContent: 'center', alignContent: 'center', height: '100%', paddingTop: '100px' }}>
-                <div className="glass-panel" style={{ padding: '40px', width: '100%', maxWidth: '500px' }}>
-                    <h2>Add New Pet</h2>
-                    <form onSubmit={handleAddPet} style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '20px' }}>
-                        <div>
-                            <label style={{ display: 'block', marginBottom: '8px' }}>Pet Name</label>
-                            <input type="text" required value={newPet.name} onChange={e => setNewPet({ ...newPet, name: e.target.value })} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)' }} />
-                        </div>
-                        <div>
-                            <label style={{ display: 'block', marginBottom: '8px' }}>Breed</label>
-                            <input type="text" value={newPet.breed} onChange={e => setNewPet({ ...newPet, breed: e.target.value })} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)' }} />
-                        </div>
-                        <div style={{ display: 'flex', gap: '16px' }}>
-                            <div style={{ flex: 1 }}>
-                                <label style={{ display: 'block', marginBottom: '8px' }}>Age (Years)</label>
-                                <input type="number" value={newPet.age} onChange={e => setNewPet({ ...newPet, age: e.target.value })} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)' }} />
-                            </div>
-                            <div style={{ flex: 1 }}>
-                                <label style={{ display: 'block', marginBottom: '8px' }}>Weight (kg)</label>
-                                <input type="number" step="0.1" value={newPet.weight_kg} onChange={e => setNewPet({ ...newPet, weight_kg: e.target.value })} style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid var(--border-color)' }} />
-                            </div>
-                        </div>
-                        <button type="submit" className="btn-auth-submit" style={{ marginTop: '16px' }}>Save Pet Profile</button>
-                    </form>
-                </div>
+            <div className="dashboard animate-fade-in h-full bg-slate-50 dark:bg-[#121212] flex items-center justify-center">
+                <OnboardingWizard onComplete={handleAddPet} />
             </div>
         );
     }
@@ -91,17 +74,17 @@ const Dashboard = () => {
             </header>
 
             <div className="quick-actions">
-                <button className="action-card color-health" onClick={() => showToast("Use the Health Vault to log health data.", "info")}>
-                    <HeartPulse className="card-icon" />
-                    <span>Log Health</span>
+                <button className="action-card color-health border border-purple-200 dark:border-purple-900 shadow-sm hover:shadow-md transition-all scale-100 hover:scale-105" onClick={() => navigate('/dashboard/breed-genius')}>
+                    <Brain className="card-icon text-purple-600 dark:text-purple-400" />
+                    <span className="font-semibold text-gray-800 dark:text-gray-200">Breed Genius Triage</span>
                 </button>
-                <button className="action-card color-food" onClick={() => showToast("Meal tracking coming soon!", "info")}>
+                <button className="action-card color-food" onClick={() => navigate('/dashboard/food')}>
                     <Bone className="card-icon" />
-                    <span>Track Meal</span>
+                    <span>Food Brain AI</span>
                 </button>
-                <button className="action-card color-map" onClick={() => showToast("Use the Pet Map to find vets.", "info")}>
+                <button className="action-card color-map" onClick={() => navigate('/dashboard/map')}>
                     <MapPin className="card-icon" />
-                    <span>Find Vet</span>
+                    <span>Find Vet Facilities</span>
                 </button>
             </div>
 

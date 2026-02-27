@@ -61,7 +61,7 @@
 
 .btn-get-started {
     background: var(--text-main);
-    color: white;
+    color: var(--bg-color);
     border: none;
     padding: 12px 28px;
     border-radius: 20px;
@@ -72,9 +72,9 @@
 }
 
 .btn-get-started:hover {
-    background: #000;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
 }
 
 /* Hero Section */
@@ -128,7 +128,7 @@
 
 .btn-hero-primary {
     background: var(--primary-gradient);
-    color: white;
+    color: #000;
     border: none;
     padding: 18px 36px;
     border-radius: 30px;
@@ -145,7 +145,7 @@
 }
 
 .btn-hero-secondary {
-    background: white;
+    background: var(--surface-color);
     color: var(--text-main);
     border: 1px solid var(--border-color);
     padding: 18px 36px;
@@ -180,7 +180,7 @@
     z-index: 2;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
     transform: rotate(2deg);
-    border: 8px solid white;
+    border: 8px solid var(--surface-color);
 }
 
 .hero-img {
@@ -203,7 +203,8 @@
 
 .floating-card {
     position: absolute;
-    background: white;
+    background: var(--surface-color);
+    color: var(--text-main);
     padding: 16px 24px;
     border-radius: 20px;
     display: flex;
@@ -279,7 +280,8 @@
 }
 
 .feature-card {
-    background: white;
+    background: var(--surface-color);
+    color: var(--text-main);
     padding: 40px;
     border-radius: 24px;
     border: 1px solid var(--border-color);
@@ -329,7 +331,8 @@
     border-radius: 30px;
     max-width: 800px;
     width: 100%;
-    background: white;
+    background: var(--surface-color);
+    color: var(--text-main);
     border: 1px solid var(--border-color);
 }
 
@@ -345,8 +348,8 @@
 }
 
 .btn-footer-cta {
-    background: #000;
-    color: white;
+    background: var(--text-main);
+    color: var(--bg-color);
     border: none;
     padding: 16px 32px;
     border-radius: 30px;
@@ -357,7 +360,7 @@
 }
 
 .btn-footer-cta:hover {
-    background: var(--text-main);
+    opacity: 0.9;
     transform: scale(1.05);
 }
 
