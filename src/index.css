@@ -9,6 +9,13 @@
   --color-map: var(--map-main);
   --color-warning: var(--warning-main);
   --color-hero: var(--hero-text);
+
+  /* Theme-aware variables mapped to Tailwind Colors */
+  --color-surface: var(--surface-color);
+  --color-background: var(--bg-color);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-border-main: var(--border-color);
 }
 
 :root {
